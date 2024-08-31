@@ -1,0 +1,66 @@
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .otp-input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  input[type="text"][maxLength="10"] {
+    width: 300px;
+  }
+  
+  input[type="text"][maxLength="1"] {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 5px;
+  }
+  
+  .otp-boxes {
+    display: flex;
+    gap: 5px; /* Adjust spacing between OTP boxes */
+    margin-bottom: 20px;
+  }
+  
+  .otp-input-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .otp-input-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 20px;
+  }
+  

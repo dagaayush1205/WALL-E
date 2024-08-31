@@ -1,0 +1,221 @@
+/* Global styles */
+html, body {
+  height: 100%; /* Full height of the viewport */
+  margin: 0; /* Remove default margins */
+}
+
+/* Container styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #E6E6FA; /* Background color */
+  padding: 1rem; /* Add some padding for smaller screens */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* Heading styles */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap'); /* Import Lato font with bold weight */
+
+.priorities-heading {
+  font-family: 'Lato', sans-serif; /* Apply the chosen font */
+  font-weight: bold; /* Make the font bold */
+  color: black;
+  margin-bottom: 20px; /* Space between heading and button */
+  text-align: center; /* Align text to the left */
+  width: 100%; /* Ensure it spans the full width of its container */
+  padding-left: 20px; /* Add padding to the left for alignment */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Button styles */
+.button {
+  font-size: 4vw; /* Responsive font size */
+  padding: 20px;
+  width: 150px; /* Adjust width for smaller screens */
+  height: 150px; /* Adjust height for smaller screens */
+  background: radial-gradient(circle, #FF9E3C 20%, #949EF5 80%);
+  color: #fff;
+  border: none;
+  border-radius: 50%; /* Makes the button round */
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Space between button and contact list */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+.button:hover {
+  transform: scale(1.1); /* Zoom in effect */
+}
+
+/* Contacts section */
+.contacts {
+  width: 100%;
+  max-width: 1000px; /* Limit width to match the bubbles */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center contact bubbles */
+  color: #fff;
+  text-align: left; /* Align text to the left */
+  padding: 0 20px; /* Padding to prevent text from touching edges */
+  margin-bottom: 80px; /* Space for the bottom navbar */
+}
+
+/* Contact bubble styles */
+.contact-bubble {
+  display: flex;
+  align-items: center;
+  background: #4C00A3A6; /* Bubble color */
+  border-radius: 20px;
+  padding: 8px 20px;
+  margin: 10px 0; /* Vertical margin between bubbles */
+  width: 100%; /* Stretch across container */
+  max-width: 400px; /* Max width for bubbles */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-bubble:hover {
+  transform: scale(1.05); /* Zoom in effect */
+}
+
+.contact-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.contact-number {
+  font-size: 10px;
+  margin: 5px 0;
+}
+
+.call-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Bottom Navigation bar styles */
+/* Bottom Navigation bar styles */
+/* Bottom Navigation bar styles */
+.navbar {
+  width: 100%; /* Full width of the parent container */
+  max-width: 400px; /* Match the max-width of the contact bubbles */
+  background-color: #1d1160; /* Dark purple background */
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0; /* Position at the bottom */
+  z-index: 1000; /* Ensure navbar is above other content */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+  margin: 0 auto; /* Center the navbar horizontally */
+}
+
+.nav-item {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 12px; /* Rounded corners */
+  font-size: 16px;
+  width: 100px; /* Width of each nav item */
+  height: 60px; /* Adjust height for better alignment */
+  display: flex;
+  flex-direction: column; /* Stack icon and text vertically */
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Remove underline */
+  background-color: #1d1160; /* Background color matching navbar */
+  box-sizing: border-box; /* Ensure padding is included in the total width and height */
+}
+
+.nav-item i {
+  font-size: 24px; /* Size of the icon */
+  margin-bottom: 4px; /* Space between icon and text */
+}
+
+.nav-item:hover {
+  background-color: #555; /* Darken background on hover */
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .button {
+    width: 120px; /* Smaller button size on small screens */
+    height: 120px;
+    font-size: 3vw; /* Adjust font size for smaller screens */
+  }
+
+  .contact-bubble {
+    flex-direction: column; /* Stack content vertically */
+    width: 90%; /* Adjust width for small screens */
+  }
+
+  .contact-info {
+    text-align: center; /* Center text for small screens */
+  }
+
+  .navbar {
+    padding: 5px 0; /* Adjust padding for smaller screens */
+  }
+
+  .nav-item {
+    width: 80px; /* Adjust width for small screens */
+    height: 50px;
+    font-size: 14px; /* Adjust font size for small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 100px; /* Even smaller button size on very small screens */
+    height: 100px;
+    font-size: 2.5vw; /* Further adjust font size */
+  }
+
+  .contact-bubble {
+    width: 100%; /* Full width on very small screens */
+    max-width: none; /* Remove max-width */
+  }
+
+  .navbar {
+    padding: 5px 0; /* Adjust padding for very small screens */
+  }
+
+  .nav-item {
+    width: 60px; /* Adjust width for very small screens */
+    height: 40px;
+    font-size: 12px; /* Further adjust font size */
+  }
+}
+
+/* OTP button styles */
+.navigate-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.navigate-button:hover {
+  background-color: #0056b3;
+}
