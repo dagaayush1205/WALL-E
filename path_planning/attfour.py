@@ -1,13 +1,13 @@
 import math
 import matplotlib.pyplot as plt
 import numpy as np
-
+import cv2
 def group_set(area, x1, x2):
     for i in range(min(x1[0], x2[0]), max(x1[0], x2[0])):
         for j in range(min(x1[1], x2[1]), max(x1[1], x2[1])):
             area[i][j] = -1
 
-    obs_plot(x1[0],x1[1],x2[0],x2[1])
+    #obs_plot(x1[0],x1[1],x2[0],x2[1])
 
 
 def obs_plot(x1,y1,x2,y2):
@@ -19,7 +19,7 @@ def obs_plot(x1,y1,x2,y2):
     a = sorted([x1, x2])
     b = sorted([y1, y2])
     #breakpoint()
-    plt.plot([a[0],a[1],a[1],a[0],a[0]],[b[0],b[0],b[1],b[1],b[0]],"-b")
+    #plt.plot([a[0],a[1],a[1],a[0],a[0]],[b[0],b[0],b[1],b[1],b[0]],"-b")
 
 
 def detected(area):
@@ -184,6 +184,7 @@ def goal_check(goal,area):
 
 
 def main():
+    image = cv2.imread('map.png')
     playGround=[0,1952,0,1197]
     """
     0: new
@@ -194,15 +195,24 @@ def main():
     """
     plt.axis(playGround)
     plt.grid()
-    start=[975,248]
-    waypoint=[[980,270]]
+    start=[1129,189]
+    waypoint=[[1000,360]]
     pos = start
     a=start
     area = [[[-1 for _ in range(4)] for _ in range(playGround[3]+1)] for _ in range(playGround[1]+1)]
-    for i in range(975,993):
-        for j in range(248,351):
-            area[i][j][3]=0
-    obs_plot(975,351,993,248)
+
+    #for i in range(975,993):
+    for j in range(182,362):
+            area[1130][j][3]=0
+    #obs_plot(975,351,993,248)
+
+
+# the main road from arch gate to global hospital
+    for i in range(984,1493):
+        #for j in range(360,360):
+        area[i][360][3]=0 
+    #obs_plot(984,360,1493,360)
+
     for i in range (len(waypoint)):
         goal = waypoint[i]
         #print(i)
@@ -214,16 +224,16 @@ def main():
             #print("Open cells: ",open_cells)
             #print("pos: ",pos)
             #print("area: ",area)
-            a=pos
-            #print(a)
+            print(a)
             #plt.plot([pos[0],pos[1]],[a[0],a[1]],"-r")
             a=pos
-            plt.gcf().canvas.mpl_connect(
-            'key_release_event',
-            lambda event: [exit(0) if event.key == 'escape' else None])
-            plt.pause(0.01)
-            plt.plot(goal[0], goal[1], "-xr")
-            plt.plot([0,playGround[1],playGround[1],0,0],[0,0,playGround[3],playGround[3],0],"-r")
+            cv2.line(image,(pos[0], pos[1]), (a[0], a[1]), (0, 255, 0), 5)
+           # plt.gcf().canvas.mpl_connect(
+            #'key_release_event',
+            #lambda event: [exit(0) if event.key == 'escape' else None])
+            #plt.pause(0.01)
+            #plt.plot(goal[0], goal[1], "-xr")
+            #plt.plot([0,playGround[1],playGround[1],0,0],[0,0,playGround[3],playGround[3],0],"-r")
             it+=1
             open_cell_size_check(area,open_cells)
             if goal_check(goal,area):
@@ -236,12 +246,17 @@ def main():
         y = area[goal[0]][goal[1]][1]
         while(it):
             it-=1
-            plt.plot([x],[y],"-xr")
-            print(x," ",y)
-            x = area[x][y][0]
-            y = area[x][y][1]
-        plt.grid()
-    plt.show()
+            #plt.plot([x],[y],"-xr")
+            if area[x][y][0] != -1 and area[x][y][0]!=-1:
+                print(x," ",y)
+                x = area[x][y][0]
+                y = area[x][y][1]
+        #plt.grid()
+    cv2.imwrite('output.png',image)
+    cv2.imshow('Painted Image', image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    #plt.show()
         
 
 
