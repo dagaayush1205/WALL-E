@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const NavigationPage = () => {
   const [selectedLocation, setSelectedLocation] = useState('');
   const [locations, setLocations] = useState([
-    { id: '1', name: 'Location 1', x: 50, y: 100 },
+    { id: '1', name: 'Location 1', x: 1000, y: 369 },
     { id: '2', name: 'Location 2', x: 200, y: 150 },
     { id: '3', name: 'Location 3', x: 350, y: 200 }
   ]);

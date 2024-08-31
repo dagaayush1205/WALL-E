@@ -3,13 +3,13 @@
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: #dfaaeaf3;
+    background-color: #4C00A3A6;
 }
 
 .profile-card {
     width: 100%;
     max-width: 600px;
-    background-color: #ffffff;
+    background-color: #E6E6FA;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -85,25 +85,28 @@
 
 .contact h4 {
     font-size: 16px;
-    margin-bottom: 8px;
-    text-align: left;
+    margin-bottom: 10px;
     color: #333; /* Darker color for better readability */
+    align-items : left;
 }
 
 .contact .contact-info {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Stack label and input vertically */
     margin-bottom: 10px;
 }
 
 .contact .contact-info label {
-    flex: 1;
-    margin-right: 10px;
+    margin-bottom: 5px;
     color: #555; /* Slightly darker color for labels */
 }
 
 .contact .contact-info input {
-    flex: 2;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in width */
 }
 
 /* Buttons */

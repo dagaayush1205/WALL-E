@@ -1,5 +1,6 @@
 .navigation-page {
   text-align: center;
+  position: relative;
 }
 
 .map-container {
@@ -11,7 +12,7 @@
 
 .map-image {
   width: 100%; /* Full width of the container */
-  height: 100%; /* Full height of the container */
+  height: 100%; /* Adjust height according to the aspect ratio */
   object-fit: contain; /* Maintain aspect ratio and fit within container */
 }
 
@@ -32,19 +33,91 @@
 }
 
 .controls {
-  margin-top: 20px;
+  position: fixed;
+  bottom: 80px; /* Place it above the navigation bar */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000; /* Ensure it's on top of other elements */
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(-45deg, #ff5959, #ff4040, #ff0d6e, #ff8033, #d74177);
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 select {
-  padding: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
   margin-right: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
 }
 
 button {
-  padding: 10px;
-  background-color: blue;
+  padding: 10px 20px;
+  background-color: #ff0d6e;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d74177;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(-45deg, #ff5959, #ff4040, #ff0d6e, #ff8033, #d74177);
+  padding: 10px 0;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* Ensure it stays above other content */
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  font-family: verdana;
+  opacity: 0.9;
+}
+
+.contact-image {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.nav-text {
+  margin-top: 5px;
+}
+
+.nav-link:hover .contact-image {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover .nav-text {
+  color: #fff;
+  text-shadow: 2px 2px 20px #fff;
+  transition: color 0.2s ease;
 }
