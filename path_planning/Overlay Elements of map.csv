@@ -1,0 +1,16 @@
+ ,Index,Name,Type,Group,X,Y,Width,Height,Points,Color,Fill,LWidth,Pos,C,Z,T
+1,0,0363-1237,Rectangle,none,978,351,518,25,4,none,none,0,0,0,0,0
+2,1,0274-1125,Rectangle,none,1121,178,8,192,4,none,none,0,0,0,0,0
+3,2,0409-1122,Rectangle,none,1118,363,9,92,4,none,none,0,0,0,0,0
+4,3,0301-1128,Rectangle,none,1125,243,7,116,4,none,none,0,0,0,0,0
+5,4,0244-0990,Rectangle,none,981,119,19,251,4,none,none,0,0,0,0,0
+6,5,0378-0977,Rectangle,none,969,355,17,46,4,none,none,0,0,0,0,0
+7,6,0419-0979,Rectangle,none,975,390,9,59,4,none,none,0,0,0,0,0
+8,7,0430-0985,Rectangle,none,983,415,4,30,4,none,none,0,0,0,0,0
+9,8,0463-0992,Polygon,none,978,420,28,87,5,none,none,0,0,0,0,0
+10,9,0528-1001,Polygon,none,995,501,13,54,4,none,none,0,0,0,0,0
+11,10,0609-0950,Polygon,none,892,551,116,116,4,none,none,0,0,0,0,0
+12,11,0266-1496,Polygon,none,1488,160,16,213,4,none,none,0,0,0,0,0
+13,12,0431-1489,Polygon,none,1484,365,10,132,4,none,none,0,0,0,0,0
+14,13,0490-1390,Polygon,none,1288,485,204,11,4,none,none,0,0,0,0,0
+15,14,0433-1296,Polygon,none,1288,370,16,126,4,none,none,0,0,0,0,0
