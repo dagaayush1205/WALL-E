@@ -1,0 +1,50 @@
+.navigation-page {
+  text-align: center;
+}
+
+.map-container {
+  position: relative;
+  width: 1958px; /* Fixed width for the map */
+  height: 1197px; /* Fixed height for the map */
+  overflow: hidden; /* Hide overflow to keep map boundaries */
+}
+
+.map-image {
+  width: 100%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  object-fit: contain; /* Maintain aspect ratio and fit within container */
+}
+
+.map-tracker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.tracker-dot {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+select {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

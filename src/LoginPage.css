@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 body, html {
+            
             margin: 0;
             padding: 0;
             height: 100%;
@@ -26,12 +27,17 @@ body, html {
             overflow: hidden;
 }
  h1 {
-    font-family: 'bradley hand', cursive;
+    
+    font-family: "press Start 2P";
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
             color: #8756c1;
             padding: 20px 0;
             font-size: 44px;
             text-align: center;
-        }
+            animation: animate 1s ease-in-out infinite;
+ }
+
         p{
             width: fit-content;
             font-size: 25px;
@@ -40,8 +46,7 @@ body, html {
             width: 100%;
             max-width: 300px;
             aspect-ratio: 1 / 1;
-            background-color: #f0f0f0;
-            display: flex;
+                display: flex;
             justify-content: center;
             align-items: center;
             margin: 20px 0;
@@ -52,18 +57,44 @@ body, html {
             object-fit: cover;
         }
         .login-button {
-            background-color: #8756c1;
-            color: white;
-            border: none;
-            padding: 12px 20px;
+            color: #8756c1;
+                 padding: 12px 20px;
             font-size: 25px;
             cursor: pointer;
             border-radius: 15px;
         }
         h4 {
-            font-family: 'bradley hand', cursive; /* Change to your preferred font */
-            font-size: 18px; /* Adjust size as needed */
+            font-family: 'New Amsterdam', cursive; /* Change to your preferred font */
+            font-size: 25px; /* Adjust size as needed */
             font-weight: bold; /* or 'normal', 'lighter', etc. */
             color: #333; /* Change to your preferred color */
             text-align: center; /* Center align the text */
+            animation: text 10s 1;
           }
+
+@keyframes animate{
+    0%{
+        transform: translateY(0px);
+    }
+    10%{
+        transform: translateY(-1px);
+    }
+    20%{
+        transform: translateY(-1px);
+
+    }
+    30%{ 
+        transform: translateY(0px);
+    }
+}
+@keyframes text{
+    0%{
+        color: #8756c1;
+    }
+    30%{
+        letter-spacing: 2px;
+    }
+    85%{
+        letter-spacing: 1px;
+    }
+}

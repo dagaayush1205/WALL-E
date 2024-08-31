@@ -1,6 +1,6 @@
 import React from 'react';
 import './LoginPage.css'; // Import CSS for styling
-import sihpic from './images/sih.jpeg';
+import sihpic from './images/sih.png';
 
 const LoginPage = ({ onLogin }) => {
   return (

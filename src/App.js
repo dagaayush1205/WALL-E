@@ -4,6 +4,7 @@ import SOSButton from './SOSbutton';
 import OTPVerification from './OTPverification';
 import LoginPage from './LoginPage';
 import ProfilePage from './ProfilePage';
+import NavigationPage from './NavigationPage'; // Import NavigationPage
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path="/" element={<SOSButton />} />
               <Route path="/otp-verification" element={<OTPVerification />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/navigation" element={<NavigationPage />} /> {/* Add NavigationPage route */}
               {/* Redirect to home if the route is not found */}
               <Route path="*" element={<Navigate to="/" />} />
             </>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios
 import './SOSbutton.css'; // Import the CSS file
 import homeIcon from './images/home.png';
 import navigationIcon from './images/navigation.jpg';
@@ -15,6 +16,7 @@ import callIcon from './images/call.png';
 const SOSButton = () => {
   const [playing, setPlaying] = useState(false);
   const [audio, setAudio] = useState(null);
+  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     // Initialize the audio object once
@@ -26,6 +28,24 @@ const SOSButton = () => {
       newAudio.pause();
       newAudio.currentTime = 0;
     };
+  }, []);
+
+  useEffect(() => {
+    // Fetch contact data when the component mounts
+    const fetchContacts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/get-profile');
+        const data = response.data;
+
+        // Set contacts from profile data
+        setContacts(data.contacts || []);
+      } catch (error) {
+        console.error('Error fetching profile data:', error);
+        alert('Failed to fetch profile data.');
+      }
+    };
+
+    fetchContacts();
   }, []);
 
   const handleClick = async () => {
@@ -94,54 +114,38 @@ const SOSButton = () => {
       </button>
       <div className="contacts">
         <h3 className="priorities-heading">Your Priorities</h3>
-        <div className="contact-bubble">
-          <img src={defaultProfilePic} alt="Profile" className="contact-image" />
-          <div className="contact-info">
-            <div className="contact-name">Contact-3</div>
-            <div className="contact-number">123-456-7890</div>
-          </div>
-          <img
-            src={callIcon}
-            alt="Call"
-            className="call-icon"
-            onClick={() => handleCall('123-456-7890')}
-          />
-        </div>
-        <div className="contact-bubble">
-          <img src={defaultProfilePic} alt="Profile" className="contact-image" />
-          <div className="contact-info">
-            <div className="contact-name">Contact-2</div>
-            <div className="contact-number">987-654-3210</div>
-          </div>
-          <img
-            src={callIcon}
-            alt="Call"
-            className="call-icon"
-            onClick={() => handleCall('987-654-3210')}
-          />
-        </div>
-        <div className="contact-bubble">
-          <img src={defaultProfilePic} alt="Profile" className="contact-image" />
-          <div className="contact-info">
-            <div className="contact-name">Emergency Services</div>
-            <div className="contact-number">911</div>
-          </div>
-          <img
-            src={callIcon}
-            alt="Call"
-            className="call-icon"
-            onClick={() => handleCall('911')}
-          />
-        </div>
+        {contacts.length > 0 ? (
+          contacts.map((contact, index) => (
+            <div key={index} className="contact-bubble">
+              <img src={defaultProfilePic} alt="Profile" className="contact-image" />
+              <div className="contact-info">
+                <div className="contact-name">{contact.name}</div>
+                <div className="contact-number">{contact.phone}</div>
+              </div>
+              <img
+                src={callIcon}
+                alt="Call"
+                className="call-icon"
+                onClick={() => handleCall(contact.phone)}
+              />
+            </div>
+          ))
+        ) : (
+          <p>No contacts found.</p>
+        )}
       </div>
       <div className="navbar">
         <div className="nav-item">
+        <Link to="/" className="nav-link">
           <img src={homeIcon} alt="homeIcon" className="contact-image" />
           <span className="nav-text">Home</span>
+          </Link>
         </div>
         <div className="nav-item">
+        <Link to="/navigation" className="nav-link">
           <img src={navigationIcon} alt="navigationIcon" className="contact-image" />
           <span className="nav-text">Navigation</span>
+        </Link>
         </div>
         <div className="nav-item">
           <Link to="/profile" className="nav-link">
