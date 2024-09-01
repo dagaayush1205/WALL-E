@@ -19,11 +19,12 @@ def obs_plot(x1,y1,x2,y2):
     a = sorted([x1, x2])
     b = sorted([y1, y2])
     #breakpoint()
-    #plt.plot([a[0],a[1],a[1],a[0],a[0]],[b[0],b[0],b[1],b[1],b[0]],"-b")
+    plt.plot([a[0],a[1],a[1],a[0],a[0]],[b[0],b[0],b[1],b[1],b[0]],"-b")
 
 
 def detected(area):
     group_set(area, (30,25), (35,25))
+    #pull data from police database
 
 
 def distance(x1,y1,x2,y2):
@@ -193,25 +194,30 @@ def main():
     2: closed
     3: blocked
     """
-    plt.axis(playGround)
-    plt.grid()
+    #plt.axis(playGround)
+    #plt.grid()
     start=[1129,189]
-    waypoint=[[1000,360]]
+    waypoint=[[1334,250]]
     pos = start
     a=start
     area = [[[-1 for _ in range(4)] for _ in range(playGround[3]+1)] for _ in range(playGround[1]+1)]
-
+# trs/ub road
     #for i in range(975,993):
     for j in range(182,362):
             area[1130][j][3]=0
-    #obs_plot(975,351,993,248)
+    #obs_plot(1130,351,1131,248)
 
 
 # the main road from arch gate to global hospital
     for i in range(984,1493):
         #for j in range(360,360):
         area[i][360][3]=0 
-    #obs_plot(984,360,1493,360)
+    #obs_plot(984,360,1493,361)
+
+#tp road from java
+    for i in range(249,368):
+        area[1334][i][3]=0
+    #obs_plot(1334,358,1332,250)
 
     for i in range (len(waypoint)):
         goal = waypoint[i]
@@ -221,14 +227,14 @@ def main():
             #area = detected(area)
             area, pos, open_cells = neighbour_cells(pos,playGround,area,goal)
            #print(pos[0], " " , pos[1])
-            #print("Open cells: ",open_cells)
-            #print("pos: ",pos)
+            print("Open cells: ",len(open_cells))
+            print("pos: ",pos)
             #print("area: ",area)
-            print(a)
+            #print(a)
             #plt.plot([pos[0],pos[1]],[a[0],a[1]],"-r")
             a=pos
             cv2.line(image,(pos[0], pos[1]), (a[0], a[1]), (0, 255, 0), 5)
-           # plt.gcf().canvas.mpl_connect(
+            #plt.gcf().canvas.mpl_connect(
             #'key_release_event',
             #lambda event: [exit(0) if event.key == 'escape' else None])
             #plt.pause(0.01)

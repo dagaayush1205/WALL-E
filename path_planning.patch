@@ -1,0 +1,163 @@
+diff --git a/path_planning/attfour.py b/path_planning/attfour.py
+index 47c95f5..a5a41b0 100644
+--- a/path_planning/attfour.py
++++ b/path_planning/attfour.py
+@@ -1,13 +1,13 @@
+ import math
+ import matplotlib.pyplot as plt
+ import numpy as np
++import cv2
++
+ def group_set(area, x1, x2):
+     for i in range(min(x1[0], x2[0]), max(x1[0], x2[0])):
+         for j in range(min(x1[1], x2[1]), max(x1[1], x2[1])):
+             area[i][j] = -1
+ 
++    #obs_plot(x1[0],x1[1],x2[0],x2[1])
+-    obs_plot(x1[0],x1[1],x2[0],x2[1])
+ 
+ 
+ def obs_plot(x1,y1,x2,y2):
+@@ -19,7 +19,7 @@ def obs_plot(x1,y1,x2,y2):
+     a = sorted([x1, x2])
+     b = sorted([y1, y2])
+     #breakpoint()
++    #plt.plot([a[0],a[1],a[1],a[0],a[0]],[b[0],b[0],b[1],b[1],b[0]],"-b")
+-    plt.plot([a[0],a[1],a[1],a[0],a[0]],[b[0],b[0],b[1],b[1],b[0]],"-b")
+ 
+ 
+ def detected(area):
+@@ -141,7 +141,7 @@ def neighbour_cells(pos,playGround,area,goal):
+             #print(orientation[i])
+     print("Cost:",cost)
+         #print("least:",least)
++    #plt.plot([pos[0],pos[1]],[least[0],least[1]],"-b")
+-    plt.plot([pos[0],pos[1]],[least[0],least[1]],"-b")
+     #print("final:",least)
+     return least,area
+ 
+@@ -184,8 +184,6 @@ def goal_check(goal,area):
+ 
+ 
+ def main():
+-    
++    image = cv2.imread('map.png')
+     playGround=[0,1952,0,1197]
+     """
+     0: new
+@@ -196,25 +194,15 @@ def main():
+     """
+     plt.axis(playGround)
+     plt.grid()
++    start=[1129,189]
++    waypoint=[[1000,360]]
+-    start=[975,248]
+-    waypoint=[[980,270]]
+     pos = start
+     a=start
+     area = [[[-1 for _ in range(4)] for _ in range(playGround[3]+1)] for _ in range(playGround[1]+1)]
+-
++# the road the goes in front of UB, NRI hostel
++    #for i in range(1130,1130):
++    for j in range(182,362):
++         area[1130][j][3]=0
++    #obs_plot(1130,182,1130,362)
++
++# the main road from arch gate to global hospital
++    for i in range(984,1493):
++        #for j in range(360,360):
++        area[i][360][3]=0 
++    #obs_plot(984,360,1493,360)
++
++
+-    for i in range(975,993):
+-        for j in range(248,351):
+-            area[i][j][3]=0
+-    obs_plot(975,351,993,248)
+     for i in range (len(waypoint)):
+         goal = waypoint[i]
+         #print(i)
+@@ -222,45 +210,38 @@ def main():
+         while pos != goal:
+             #area = detected(area)
+             area, pos, open_cells = neighbour_cells(pos,playGround,area,goal)
++            #print(pos[0], " " , pos[1])
++            #print("Open cells: ",len(open_cells))
+-           #print(pos[0], " " , pos[1])
+-            #print("Open cells: ",open_cells)
+             #print("pos: ",pos)
+             #print("area: ",area)
+             a=pos
++            cv2.line(image,(pos[0], pos[1]), (a[0], a[1]), (0, 255, 0), 5)
+             #print(a)
+             #plt.plot([pos[0],pos[1]],[a[0],a[1]],"-r")
++            #plt.gcf().canvas.mpl_connect(
++    #        'key_release_event',
++     #       lambda event: [exit(0) if event.key == 'escape' else None])
++            #plt.pause(0.001)
++            #plt.plot(goal[0], goal[1], "-xr")
++            #plt.plot([0,playGround[1],playGround[1],0,0],[0,0,playGround[3],playGround[3],0],"-r")
+-            a=pos
+-            plt.gcf().canvas.mpl_connect(
+-            'key_release_event',
+-            lambda event: [exit(0) if event.key == 'escape' else None])
+-            plt.pause(0.01)
+-            plt.plot(goal[0], goal[1], "-xr")
+-            plt.plot([0,playGround[1],playGround[1],0,0],[0,0,playGround[3],playGround[3],0],"-r")
+             it+=1
+             open_cell_size_check(area,open_cells)
+             if goal_check(goal,area):
+                 print("goal reached")
+                 break
++            print("next step:",a)
+-            #print("next step:",a)
+         print("ALERT: Reached Waypoint",i)
+         #print(open_cells)
+         x = area[goal[0]][goal[1]][0]
+         y = area[goal[0]][goal[1]][1]
+         while(it):
+             it-=1
++            #plt.plot([x],[y],"-xr")
++            if area[x][y][0] != -1 and area[x][y][0]!=-1:
++                print(x," ",y)
++                x = area[x][y][0]
++                y = area[x][y][1]
++        #plt.grid()
++    cv2.imwrite('output.png', image)
++
++# Display the image
++    cv2.imshow('Painted Image', image)
++    cv2.waitKey(0)
++    cv2.destroyAllWindows()
++    #plt.show()
+-            plt.plot([x],[y],"-xr")
+-            print(x," ",y)
+-            x = area[x][y][0]
+-            y = area[x][y][1]
+-        plt.grid()
+-    plt.show()
+         
+ 
+ 
+diff --git a/path_planning/imageColor.py b/path_planning/imageColor.py
+deleted file mode 100644
+index 4058546..0000000
+--- a/path_planning/imageColor.py
++++ /dev/null
+@@ -1,16 +0,0 @@
++import cv2
++
++# Load an image
++image = cv2.imread('map.png')
++
++# Draw a circle
++cv2.circle(image, (250, 250), 50, (255, 0, 0), 5)
++
++# Save the image
++cv2.imwrite('output.png', image)
++
+-# Display the image
+-cv2.imshow('Painted Image', image)
+-cv2.waitKey(0)
+-cv2.destroyAllWindows()
+-
