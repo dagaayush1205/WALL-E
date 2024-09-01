@@ -87,7 +87,11 @@ function ProfilePage() {
                         ) : (
                             <img src={profilePicture} alt="Profile" />
                         ))}
-                        <input type="file" onChange={handlePictureChange} />
+                            <label for="file-upload" class="custom-file-upload">
+                                                    Choose File
+                                                                    </label>
+                                    <input id="file-upload" type="file" onChange={handlePictureChange} />
+                        {/* <input type="file" onChange={handlePictureChange} /> */}
                     </div>
                     <div className="profile-info">
                         <h2>{name || 'Your Name'}</h2>
@@ -110,57 +114,51 @@ function ProfilePage() {
                     <div className="contact">
                         <h4>Contact 1</h4>
                         <div className="contact-info">
-                            <label>Name</label>
                             <input
                                 type="text"
                                 value={contact1.name}
                                 onChange={(e) => setContact1({ ...contact1, name: e.target.value })}
-                                placeholder="Contact Name"
+                                placeholder=" Name"
                             />
-                            <label>Contact</label>
                             <input
                                 type="text"
                                 value={contact1.phone}
                                 onChange={(e) => setContact1({ ...contact1, phone: e.target.value })}
-                                placeholder="Contact Number"
+                                placeholder=" Number"
                             />
                         </div>
                     </div>
                     <div className="contact">
                         <h4>Contact 2</h4>
                         <div className="contact-info">
-                            <label>Name</label>
                             <input
                                 type="text"
                                 value={contact2.name}
                                 onChange={(e) => setContact2({ ...contact2, name: e.target.value })}
-                                placeholder="Contact Name"
+                                placeholder="Name"
                             />
-                            <label>Contact</label>
                             <input
                                 type="text"
                                 value={contact2.phone}
                                 onChange={(e) => setContact2({ ...contact2, phone: e.target.value })}
-                                placeholder="Contact Number"
+                                placeholder="Number"
                             />
                         </div>
                     </div>
                     <div className="contact">
                         <h4>Contact 3</h4>
                         <div className="contact-info">
-                            <label>Name</label>
                             <input
                                 type="text"
                                 value={contact3.name}
                                 onChange={(e) => setContact3({ ...contact3, name: e.target.value })}
-                                placeholder="Contact Name"
+                                placeholder="Name"
                             />
-                            <label>Contact</label>
-                            <input
+                                <input
                                 type="text"
                                 value={contact3.phone}
                                 onChange={(e) => setContact3({ ...contact3, phone: e.target.value })}
-                                placeholder="Contact Number"
+                                placeholder="Number"
                             />
                         </div>
                     </div>
