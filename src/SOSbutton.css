@@ -50,7 +50,7 @@ html, body {
   padding: 20px;
   width: 150px; /* Adjust width for smaller screens */
   height: 150px; /* Adjust height for smaller screens */
-  background: radial-gradient(circle, #FF9E3C 20%, #949EF5 80%);
+  background: #949EF5 ;
   color: #ffffff;
   border: none;
   border-radius: 50%; /* Makes the button round */
@@ -190,7 +190,7 @@ html, body {
   align-items: center;
   justify-content: center;
   text-decoration: none; /* Remove underline */
-  background-color: #1d1160; /* Background color matching navbar */
+  background-color: #8756C1; /* Background color matching navbar */
   box-sizing: border-box; /* Ensure padding is included in the total width and height */
 }
 
@@ -211,7 +211,7 @@ html, body {
   }
 
   .contact-bubble {
-    flex-direction: column; /* Stack content vertically */
+    flex-direction: row; /* Stack content vertically */
     width: 90%; /* Adjust width for small screens */
   }
 

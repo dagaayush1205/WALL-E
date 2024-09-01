@@ -58,27 +58,27 @@ select {
 
 button {
   padding: 10px 20px;
-  background-color: #ff0d6e;
+  background-color: #8756C1;
   color: white;
-  border: none;
-  border-radius: 5px;
+ 
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #d74177;
+  background-color: #674295;
 }
 
 .navbar {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 8.5%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(-45deg, #ff5959, #ff4040, #ff0d6e, #ff8033, #d74177);
+  background-color: #8756C1;
   padding: 10px 0;
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);

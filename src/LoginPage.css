@@ -57,11 +57,13 @@ body, html {
             object-fit: cover;
         }
         .login-button {
-            color: #8756c1;
-                 padding: 12px 20px;
+            color: #000000;
+            padding: 12px 20px;
             font-size: 25px;
             cursor: pointer;
-            border-radius: 15px;
+            border-radius: 20px   ;
+            border-color: #000000;
+            box-shadow: 0px 2px 2px rgb(0, 0, 0,0.5) ;    
         }
         h4 {
             font-family: 'New Amsterdam', cursive; /* Change to your preferred font */
